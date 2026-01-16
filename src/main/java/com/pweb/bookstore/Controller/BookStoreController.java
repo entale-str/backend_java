@@ -1,24 +1,19 @@
 package com.pweb.bookstore.Controller;
 
-import java.util.Map;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import com.pweb.bookstore.Service.ProductService;
-import com.pweb.bookstore.dto.BookResponseDTO;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/books")
 public class BookStoreController {
-
     @Autowired
-    private ProductService productService;
+    @GetMapping("/test")
+    public HashMap<String, String> testEndpoint() {
+        HashMap<String, String> response = new HashMap<>();
+        response.put("message","Success");
+        return response;
 
-    @GetMapping("/{id}")
-    public Map<String, BookResponseDTO> getProductById(
-            @PathVariable int id 
-    ) {
-        return productService.getProductById(id);
     }
 }
